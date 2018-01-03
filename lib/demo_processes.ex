@@ -2,14 +2,14 @@ defmodule DemoProcesses do
   @moduledoc """
   Documentation for DemoProcesses.
   """
-  alias DemoProcesses.{Step01, Step02, Step03, Utils}
+  alias DemoProcesses.{Step00, Step02, Step03, Utils}
 
   @doc """
-  Start Step01 "remembering" process and a have a short conversation with it.
+  Start Step00 "remembering" process and a have a short conversation with it.
 
   Effectively...
 
-      pid = Step01.start_process()
+      pid = Step00.start_process()
 
       send(pid, {:remember, "Processes are powerful!"})
       send(pid, {:value, self()})
@@ -21,11 +21,11 @@ defmodule DemoProcesses do
       end
 
   """
-  def step_01 do
+  def step_00 do
     Utils.clear()
 
     # start the process that remembers something
-    pid = Step01.start_process()
+    pid = Step00.start_process()
 
     # tell the process to remember the value "Processes are powerful!"
     send(pid, {:remember, "Processes are powerful!"})
