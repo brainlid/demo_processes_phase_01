@@ -1,4 +1,4 @@
-defmodule DemoProcesses.Step01 do
+defmodule DemoProcesses.Step00 do
   @moduledoc """
   Demonstrate a simple example of message passing.
   """

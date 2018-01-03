@@ -11,13 +11,25 @@ defmodule DemoProcesses.Utils do
   @doc """
   "Say" a message. Writes to stdout using `IO.puts`. Includes the pid of the
   speaker to help make a dialog clearer.
+
+  Options support `:delay` value.
+
+    * :lookup - the time to lookup a value (shorter)
+    * :speak - the time speak a phrase (longer)
+
   """
-  def say(message) do
+  def say(message, opts \\ []) do
+    delay = Keyword.get(opts, :delay, :speak)
     color = Process.get(:color, :grey)
     color_func = color_func(color)
     IO.puts(color_func.() <> "#{inspect self()}: " <> message <> ANSI.default_color())
     # wait 2 seconds after saying it.
-    Process.sleep(2_000)
+    case delay do
+      :lookup -> Process.sleep(300)
+      :speak -> Process.sleep(2_000)
+      other ->
+        raise("Unexpected delay value! #{inspect other}")
+    end
   end
 
   @doc """

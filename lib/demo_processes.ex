@@ -54,7 +54,7 @@ defmodule DemoProcesses do
     Utils.clear()
 
     data = ["Adam", "John", "Jill", "Beth", "Carl", "Zoe", "Juan", "Mark",
-            "Tom", "Samantha", "Brandon"]
+            "Tom", "Samantha", "Paul", "Steven"]
 
     # start the "rock" IO process
     rock_pid = Step02.hire_rocker()

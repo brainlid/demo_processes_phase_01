@@ -54,8 +54,12 @@ defmodule DemoProcesses.Step02 do
     receive do
       {:sort, name} ->
         cond do
-          Regex.match?(~r/^[a-g]/i, name) -> send(low_pid, {:say, name})
-          Regex.match?(~r/^[h-z]/i, name) -> send(high_pid, {:say, name})
+          Regex.match?(~r/^[a-m]/i, name) ->
+            Utils.say("Sorted #{inspect name} to LOW half", delay: :lookup)
+            send(low_pid, {:say, name})
+          Regex.match?(~r/^[n-z]/i, name) ->
+            Utils.say("Sorted #{inspect name} to HIGH half", delay: :lookup)
+            send(high_pid, {:say, name})
           true -> nil
         end
         # recursively keep processing messages
