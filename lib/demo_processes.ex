@@ -47,6 +47,31 @@ defmodule DemoProcesses do
   end
 
   @doc """
+  Simple single process sample of doing all the same work as step_02 but
+  sequentially.
+  """
+  def step_01 do
+    Utils.clear()
+
+    data = ["Adam", "John", "Jill", "Beth", "Carl", "Zoe", "Juan", "Mark",
+            "Tom", "Samantha", "Paul", "Steven"]
+
+    Enum.each(data, fn(name) ->
+      cond do
+        Regex.match?(~r/^[a-m]/i, name) ->
+          Utils.say("Sorted #{inspect name} to LOW half", delay: :lookup)
+          Utils.say("Please welcome #{inspect name}!")
+        Regex.match?(~r/^[n-z]/i, name) ->
+          Utils.say("Sorted #{inspect name} to HIGH half", delay: :lookup)
+          Utils.say("#{inspect name}, you rock!")
+        true -> nil
+      end
+    end)
+    IO.puts("---- All names sorted")
+    :ok
+  end
+
+  @doc """
   Simple 3 process example showing easy concurrency and handling of slower
   IO operations.
   """
