@@ -29,7 +29,7 @@ defmodule DemoProcesses.Step02 do
   def say_welcome() do
     Process.put(:color, :magenta)
     receive do
-      {:say, name} -> Utils.say("Please welcome #{inspect name}!")
+      {:say, name} -> Utils.say("A special welcome to #{inspect name}!")
       _ -> nil
     end
     # recursively call function to wait for things to process.

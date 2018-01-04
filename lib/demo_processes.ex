@@ -60,7 +60,7 @@ defmodule DemoProcesses do
       cond do
         Regex.match?(~r/^[a-m]/i, name) ->
           Utils.say("Sorted #{inspect name} to LOW half", delay: :lookup)
-          Utils.say("Please welcome #{inspect name}!")
+          Utils.say("A special welcome to #{inspect name}!")
         Regex.match?(~r/^[n-z]/i, name) ->
           Utils.say("Sorted #{inspect name} to HIGH half", delay: :lookup)
           Utils.say("#{inspect name}, you rock!")
